@@ -1,0 +1,4 @@
+Hugo|Boca del Rio|100|A
+Paco|Jalapa|3000|A
+Luis|Alvarado|300|A
+Pedro|Veracruz|0|A
