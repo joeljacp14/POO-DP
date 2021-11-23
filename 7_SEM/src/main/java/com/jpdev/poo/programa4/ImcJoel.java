@@ -66,6 +66,7 @@ public class ImcJoel extends Frame implements ActionListener{
 
         result = new TextField("");
         result.setBounds(130,90,70,20);
+        result.setEditable(false);
         result.setFont(resultFont);
         add(result);
         
@@ -86,34 +87,42 @@ public class ImcJoel extends Frame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent evt) {
+        int index_des = 0;
         if (evt.getSource() == btnImc){
             try {
                 height = Double.parseDouble(tfHeight.getText());
                 weight = Double.parseDouble(tfWeight.getText());
             }catch (Exception e){
                 //e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Los datos ingresados no son correctos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Los datos ingresados no son correctos\nIntente de nuevo", "ERROR", JOptionPane.ERROR_MESSAGE);
+                tfHeight.setText("");
+                tfWeight.setText("");
+                result.setText("");
             }
             imc = weight / Math.pow(height, 2);
             result.setText(String.valueOf(imc));
             if (imc < 18.5){
                 result.setBackground(Color.YELLOW);
                 indicador.select(0);
+                index_des = 0;
                 indicador.setBackground(Color.YELLOW);
             }
             if (imc >= 18.5 && imc <= 24.9){
                 result.setBackground(Color.GREEN);
                 indicador.select(1);
+                index_des = 1;
                 indicador.setBackground(Color.GREEN);
             }
             if (imc >= 25 && imc <= 29.9){
                 result.setBackground(Color.ORANGE);
                 indicador.select(2);
+                index_des = 2;
                 indicador.setBackground(Color.ORANGE);
             }
             if (imc >= 30){
                 result.setBackground(Color.RED);
                 indicador.select(3);
+                index_des = 3;
                 indicador.setBackground(Color.RED);
             }
         }
@@ -126,6 +135,7 @@ public class ImcJoel extends Frame implements ActionListener{
             result.setText("");
             result.setBackground(Color.WHITE);
             indicador.setBackground(Color.WHITE);
+            indicador.deselect(index_des);
         }
     }
         public static void main(String[] args) {
