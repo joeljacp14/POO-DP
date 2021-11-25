@@ -7,6 +7,7 @@ package com.jpdev.dp.tarea3;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Scanner;
 
 public class JoelTarea3 {
     String line;
@@ -148,26 +149,27 @@ public class JoelTarea3 {
                 System.out.println("El arbol se encuentra vacio, llenelo por favor!");
                 return;
             }
-            if (dato == this.dato){
+            iter++;
+            if (sDato == this.dato){
                 System.out.println("Dato encontrado con busqueda de arbol");
                 System.out.println("Iteraciones realizadas: "+iter);
                 return;
             }
-            if (dato < this.dato){
+            if (sDato < this.dato){
                 if (this.izq == null){
                     System.out.println("El dato no existe");
                     System.out.println("Iteraciones realizadas: "+iter);
                     return;
                 }else {
-                    this.izq.busqueda(sDato, ++iter);
+                    this.izq.busqueda(sDato, iter);
                 }
             }
-            if (dato > this.dato){
+            if (sDato > this.dato){
                 if (this.der == null){
                     System.out.println("El dato no existe");
                     System.out.println("Iteraciones realizadas: "+iter);
                 }else {
-                    this.der.busqueda(sDato, ++iter);
+                    this.der.busqueda(sDato, iter);
                 }
             }
         }
@@ -175,11 +177,18 @@ public class JoelTarea3 {
 
     public static void main(String[] args) {
         JoelTarea3 numeros = new JoelTarea3();
+        Scanner sc = new Scanner(System.in);
+        int dato, iter = 0;
         System.out.print("ARREGLO: ");
         numeros.imprime();
         System.out.print("ARBOL: ");
         numeros.arbol.inOrden();
-        //implementar busqueda
+        System.out.print("\nIngresa un dato a buscar: ");
+        dato = sc.nextInt();
+        System.out.println("======Busqueda binaria en el arreglo======");
+        numeros.busquedaBinaria(dato);
+        System.out.println("======Busqueda en el arbol binario======");
+        numeros.arbol.busqueda(dato, iter);
     }
 }
 
