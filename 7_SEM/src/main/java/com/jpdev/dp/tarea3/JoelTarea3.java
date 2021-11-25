@@ -114,7 +114,7 @@ public class JoelTarea3 {
 
         public void agrega(int nDato){
             if (nDato == this.dato){
-                System.out.println("El dato ya existe en el arbol y no se puede repetir");
+                System.out.println("El dato ya existe en el arbol");
                 return;
             }
             if (nDato < this.dato) {
@@ -151,14 +151,14 @@ public class JoelTarea3 {
             }
             iter++;
             if (sDato == this.dato){
-                System.out.println("Dato encontrado con busqueda de arbol");
-                System.out.println("Iteraciones realizadas: "+iter);
+                System.out.println("Dato encontrado");
+                System.out.println("Iteraciones: "+iter);
                 return;
             }
             if (sDato < this.dato){
                 if (this.izq == null){
                     System.out.println("El dato no existe");
-                    System.out.println("Iteraciones realizadas: "+iter);
+                    System.out.println("Iteraciones: "+iter);
                     return;
                 }else {
                     this.izq.busqueda(sDato, iter);
@@ -167,7 +167,7 @@ public class JoelTarea3 {
             if (sDato > this.dato){
                 if (this.der == null){
                     System.out.println("El dato no existe");
-                    System.out.println("Iteraciones realizadas: "+iter);
+                    System.out.println("Iteraciones: "+iter);
                 }else {
                     this.der.busqueda(sDato, iter);
                 }
