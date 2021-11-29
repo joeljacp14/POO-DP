@@ -1,7 +1,7 @@
 package com.jpdev.dp.tarea3;
 
 /**
- * @author Joel jp
+ * @author Joel Jacome Pioquinto - S18001428
  * */
 
 import java.io.BufferedReader;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class JoelTarea3 {
     String line;
-    int med = 0;
+    int med = 0, dato;
     int array[] = new int[1000];
     public File f;
     Arbol arbol = null;
@@ -31,10 +31,11 @@ public class JoelTarea3 {
                 line = br.readLine();
                 if (line == null)
                     break;
-                array[i] = Integer.parseInt(line);
+                dato = Integer.parseInt(line);
+                array[i] = dato;
                 if (arbol == null)
-                    arbol = new Arbol(Integer.parseInt(line));
-                else arbol.agrega(Integer.parseInt(line));
+                    arbol = new Arbol(dato);
+                else arbol.agrega(dato);
                 i++;
             }
             quickSort(0, array.length - 1);
@@ -113,10 +114,6 @@ public class JoelTarea3 {
         }
 
         public void agrega(int nDato){
-            if (nDato == this.dato){
-                System.out.println("El dato ya existe en el arbol");
-                return;
-            }
             if (nDato < this.dato) {
                 if (this.izq == null) {
                     this.izq = new Arbol(nDato);
@@ -125,7 +122,7 @@ public class JoelTarea3 {
                 this.izq.agrega(nDato);
                 return;
             }
-            if (nDato > this.dato){
+            if (nDato >= this.dato){
                 if (this.der == null){
                     this.der = new Arbol(nDato);
                     return;
