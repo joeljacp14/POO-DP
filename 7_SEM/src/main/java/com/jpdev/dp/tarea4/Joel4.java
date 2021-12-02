@@ -58,7 +58,7 @@ public class Joel4 {
         }
     }
 
-    public double quickSort(int primero, int ultimo){//pasar algun parametro de tiempo
+    public double quickSort(int primero, int ultimo){
         double start = System.currentTimeMillis();
         String temp;
         int i, j, central;
