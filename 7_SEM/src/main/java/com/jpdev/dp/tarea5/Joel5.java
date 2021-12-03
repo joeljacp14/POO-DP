@@ -13,6 +13,7 @@ public class Joel5 {
     //NodoHash overflow[] = new NodoHash[1501];
     String line;
     File f;
+    //line on windows PC Joel
 
     public Joel5(){
         for (int i = 0; i < 3000; i++){
