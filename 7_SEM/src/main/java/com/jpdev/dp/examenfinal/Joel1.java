@@ -1,57 +1,59 @@
-/*
-Ordenar un arreglo por el metodo de burbuja
+
 
 /**
  *
  * @author Pedro Díaz
+ * modificado por: Joel Jacome Pioquinto - S18001428
  */
 package com.jpdev.dp.examenfinal;
 
 import java.io.*;
 
-public class PedroA {
+public class Joel1 {
 
     public int arr[] = new int[100];
     File f;
+    int med = 0;
 
-    public PedroA() {
+    public Joel1() {
         System.out.println("INICIO");
         leeArch();
     }
 
     public void leeArch() {
-        File f = new File("Numeros10.txt");
-        string aux;
+        f = new File("Numeros100.txt");
+        String aux;
         double num;
         int con = 0;
         try {
-            if (!f.Exists()) {
-                System.out.println("No existe el archivo);
-                retur;
+            if (!f.exists()) {
+                System.out.println("No existe el archivo");
+                return;
             }
-            Filereader r = new Filereader(f);
-            Bufferedrder br = new BufferedReader(r);
+            FileReader r = new FileReader(f);
+            BufferedReader br = new BufferedReader(r);
             while (true) {
                 aux = br.readLine();
                 if (aux == null) {
                     break;
                 }
-                arr[con++] = integer.parseInt(aux);
+                arr[con] = Integer.parseInt(aux);
+                con++;
             }
             System.out.println("COntador = " + con);
-        } catch (IOExcepcion e) {
+        } catch (IOException e) {
             System.out.println("No existe el archivo");
         }
     }
 
     public void imprime() {
-        for (int con = 0; con < arr.length(); con++) {
+        for (int con = 0; con < arr.length; con++) {
             System.out.println(arr[con] + ", ");
         }
         System.out.println("");
     }
 
-    public void ordenQuickort(int primero, int ultimo) {
+    public void ordenQuicksort(int primero, int ultimo) {
         int i, j, central;
         double pivote;
         central = (primero + ultimo) / 2;
@@ -59,26 +61,26 @@ public class PedroA {
         i = primero;
         j = ultimo;
         do {
-            while (arr[i] < pivote) {
+            while (arr[i] > pivote) {
                 i++;
             }
-            while (arr[j] > pivote) {
+            while (arr[j] < pivote) {
                 j--;
             }
             if (i <= j) {
                 int tmp;
                 tmp = arr[i];
                 arr[i] = arr[j];
-                arr[j] = tmporal;
+                arr[j] = tmp;
                 i++;
                 j--;
             }
         } while (i <= j);
         if (primero < j) {
-            ordenQuicksort(primero, j); 
+            ordenQuicksort(primero, j);
         }
         if (i < ultimo) {
-            ordenQuicksort(i, ultimo); 
+            ordenQuicksort(i, ultimo);
         }
     }
 
@@ -95,11 +97,32 @@ public class PedroA {
         if (!encontro) System.out.println("Numero no existe");
         
     }
-    
-    public static void main(String() args) {    
-        PedroA xx = new PedroA();    
-        xx.ordenQuicksort(0,xx.arr.length-1);   
-        xx.busquedaSecuencial(841);
+
+    public void busquedaBinaria(int sDato){
+        int ini = 0, fin = arr.length-1, iter = 0;
+        while (ini <= fin){
+            med = (ini + fin) / 2;
+            iter++;
+            if (arr[med] == (sDato)){
+                System.out.println(sDato+" encontrado en la pocision "+med);
+                break;
+            } else {
+                if (sDato > (arr[med]))
+                    ini = med + 1;
+                else
+                    fin = med - 1;
+            }
+        }
+        if (ini > fin)
+            System.out.println("El dato no existe");
+        System.out.println("Iteraciones: "+iter);
+    }
+
+    public static void main(String[] args) {
+        Joel1 xx = new Joel1();
+        xx.ordenQuicksort(0,xx.arr.length-1);
+        //xx.busquedaSecuencial(841);
+        xx.busquedaBinaria(841);
         xx.imprime();
     }
 }
