@@ -1,0 +1,12 @@
+1|Hugo|100
+2|Paco|300
+3|Luis|3400
+4|Pedro|1234
+5|Juana|1300
+6|mary|3120
+7|Pepe|123
+8|Abo|40
+15|Ana|530
+26|Ila|9120
+37|Koke|5123
+48|Car|456
